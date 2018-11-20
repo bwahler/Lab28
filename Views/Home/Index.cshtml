@@ -1,0 +1,34 @@
+﻿@if (ViewBag.CardsInHand != null)
+{
+
+    foreach (var card in ViewBag.CardsInHand)
+    {
+        <section>
+            <img src="@card["image"]" />
+            <p>@card["value"] OF @card["suit"]</p>
+        </section>
+    }
+}
+<br />
+
+
+<form action="/Home/CreateDeck" method="post">
+    <input type="submit" value="Make a new deck" />
+</form>
+<br />
+
+@if (ViewBag.Deck != null)
+{
+    <form action="/Home/DrawCards" method="post">
+        <input type="submit" value="Draw Cards!" />
+        <input type="hidden" name="deck_id" value="@ViewBag.Deck" />
+    </form>
+}
+
+@if (ViewBag.Deck != null)
+{
+    <form action="/Home/DrawCards" method="post">
+        <input type="submit" value="Draw 5 Cards!" />
+        <input type="hidden" name="deck_id" value="@ViewBag.Deck" />
+    </form>
+}
